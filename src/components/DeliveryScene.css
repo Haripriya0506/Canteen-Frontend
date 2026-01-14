@@ -1,0 +1,82 @@
+/* 🌆 MAIN SCENE */
+.scene {
+  position: relative;
+  width: 100%;
+  height: 380px;                 /* ⬆️ taller scene */
+  overflow: hidden;
+  background: linear-gradient(#e0f7ff, #ffffff);
+}
+
+/* ☁️ CLOUDS */
+.cloud {
+  position: absolute;
+  top: 30px;
+  width: 200px;                 /* ⬆️ bigger clouds */
+  opacity: 0.85;
+  animation: cloud-move 25s linear infinite;
+}
+
+.cloud1 {
+  left: -220px;
+}
+
+.cloud2 {
+  left: -400px;
+  top: 110px;
+  animation-delay: 10s;
+}
+
+@keyframes cloud-move {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(140vw);
+  }
+}
+
+/* 🏙️ BUILDINGS */
+.buildings {
+  position: absolute;
+  bottom: 110px;                /* ⬆️ move up */
+  width: 150%;                  /* ⬆️ wider buildings */
+  left: -10%;
+  opacity: 0.95;
+  animation: building-move 45s linear infinite;
+}
+
+@keyframes building-move {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-30%);
+  }
+}
+
+/* 🛣️ ROAD */
+.road {
+  position: absolute;
+  bottom: 0;
+  width: 120%;
+  height: 110px;                /* ⬆️ thicker road */
+  object-fit: cover;
+}
+
+/* 🚴 DELIVERY BIKE */
+.bike {
+  position: absolute;
+  bottom: 55px;                 /* ⬆️ above road */
+  left: -260px;
+  width: 240px;                 /* ⬆️ bigger bike */
+  animation: bike-move 3.5s ease-out forwards;
+}
+
+@keyframes bike-move {
+  from {
+    left: -260px;
+  }
+  to {
+    left: 45%;
+  }
+}
