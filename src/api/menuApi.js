@@ -1,26 +1,26 @@
-import api from "./axios";
+import axiosInstance from "./axiosInstance";
 
-// Get all menu items
+// 🍽️ Get all menu items
 export const getMenu = () => {
-  return api.get("/api/menu");
+  return axiosInstance.get("/api/menu");
 };
 
-// Add menu item (ADMIN)
+// ➕ Add menu item (ADMIN)
 export const addMenuItem = (data) => {
-  return api.post("/api/menu", data);
+  return axiosInstance.post("/api/menu", data);
 };
 
-// Get menu by id
+// 🔍 Get menu by ID
 export const getMenuById = (id) => {
-  return api.get(`/api/menu/${id}`);
+  return axiosInstance.get(`/api/menu/${id}`);
 };
 
-// Update menu
+// ✏️ Update menu item
 export const updateMenuItem = (id, data) => {
-  return api.put(`/api/menu/${id}`, data);
+  return axiosInstance.put(`/api/menu/${id}`, data);
 };
 
-// Delete menu
+// ❌ Delete menu item
 export const deleteMenuItem = (id) => {
-  return api.delete(`/api/menu/${id}`);
+  return axiosInstance.delete(`/api/menu/${id}`);
 };

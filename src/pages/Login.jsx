@@ -13,19 +13,26 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+ const handleLogin = async (e) => {
+  e.preventDefault();
+  setLoading(true);
 
-    try {
-      await loginUser(email, password);
-      navigate("/dashboard");
-    } catch (err) {
-      alert(err.response?.data || "Invalid credentials");
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    await loginUser(
+      email.trim().toLowerCase(),   // ✅ normalize email
+      password
+    );
+    navigate("/dashboard");
+  } catch (err) {
+    console.log("LOGIN ERROR:", err.response?.data);
+    alert(err.response?.data?.message || "Invalid credentials");
+  } finally {
+    setLoading(false);
+  }
+  console.log("LOGIN EMAIL SENT:", email);
+console.log("LOGIN PASSWORD SENT:", password);
+
+};
 
   return (
     <div className="min-h-screen grid grid-cols-1 md:grid-cols-2 bg-[#f7f7f7]">
@@ -45,12 +52,11 @@ const Login = () => {
           </p>
 
           <form onSubmit={handleLogin} autoComplete="on">
-            {/* ✅ EMAIL WITH BROWSER SUGGESTION */}
             <div className="input-group">
               <input
                 type="email"
                 name="email"
-                autoComplete="email"
+                autoComplete="username"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -58,7 +64,6 @@ const Login = () => {
               />
             </div>
 
-            {/* ✅ PASSWORD WITH BROWSER AUTOFILL */}
             <div className="input-group password-group">
               <input
                 type={showPassword ? "text" : "password"}

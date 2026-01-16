@@ -30,12 +30,13 @@ export default function Register() {
     }
 
     try {
-      await registerUser({
-        name: form.name,
-        email: form.email,
-        age: Number(form.age),
-        password: form.password,
-      });
+     await registerUser({
+  name: form.name.trim(),
+  email: form.email.trim().toLowerCase(),
+  age: Number(form.age),
+  password: form.password,
+});
+
 
       alert("Registered successfully 🎉");
       navigate("/login");

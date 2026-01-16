@@ -20,6 +20,7 @@ export default function Payment() {
           <span>₹{item.price * item.qty}</span>
         </div>
       ))}
+      
       <img
   src="/readyah.png"
   alt="Success"
@@ -28,6 +29,7 @@ export default function Payment() {
 <h2 className="text-2xl font-bold text-green-600 text-center">
   Order Placed Successfully 🎉
 </h2>
+
 
 
       <hr className="my-4" />
